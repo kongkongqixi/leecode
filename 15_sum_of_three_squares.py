@@ -90,41 +90,5 @@ class Solution:
             while k < len_num - 2 and nums[k] == nums[k-1]:
                 k += 1
         return result
-    def threeSum(self, nums) :
-        plusNumber = []
-        negativeNumber = []
-        zeroNumber = []
-        resulNum = []
-        for i in nums:
-            if i > 0:
-                plusNumber.append(i)
-            elif i < 0:
-                negativeNumber.append(i)
-            elif i == 0:
-                zeroNumber.append(0)
-        if len(zeroNumber) >= 3:
-            resulNum.append([0,0,0])
-        plusNumber.extend(zeroNumber)
-        for i,value_i in enumerate(plusNumber):
-            for j in range(i+1, len(plusNumber)):
-                for k in negativeNumber:
-                    if value_i + plusNumber[j] + k == 0:
-                        if value_i <= plusNumber[j] and [value_i, plusNumber[j], k] not in resulNum:
-                            resulNum.append([value_i, plusNumber[j], k])
-                            # resulNum.add(str(value_i)+str(plusNumber[j])+str(k))
-                        elif value_i > plusNumber[j] and [plusNumber[j], value_i, k] not in resulNum:
-                            resulNum.append([plusNumber[j], value_i, k])
-                            # resulNum.add(str(plusNumber[j]) + str(value_i) + str(k))
-        for i,value_i in enumerate(negativeNumber):
-            for j in range(i+1, len(negativeNumber)):
-                for k in plusNumber:
-                    if value_i + negativeNumber[j] + k == 0:
-                        if value_i <= negativeNumber[j] and [value_i, negativeNumber[j], k] not in resulNum:
-                            # resulNum.add(str(value_i) + str(negativeNumber[j]) + str(k))
-                            resulNum.append([value_i, negativeNumber[j], k])
-                        elif value_i > negativeNumber[j] and [negativeNumber[j], value_i, k] not in resulNum:
-                            # resulNum.add(str(negativeNumber[j]) + str(value_i[j]) + str(k))
-                            resulNum.append([negativeNumber[j], value_i, k])
-        return resulNum
 S = Solution()
 print(S.threeSum1([[-1,0,1,2,-1,-4]]))
